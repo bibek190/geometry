@@ -12,11 +12,15 @@ const scene = new THREE.Scene();
 
 const geometry = new THREE.BufferGeometry();
 
-const count = 50;
-const positionsArray = new Float32Array([count * 3 * 3]);
-for (i = 0; i < count * 3 * 3; i++) {
-  positionsArray[i] = Math.random();
+const count = 5000;
+const positionsArray = new Float32Array(count * 3 * 3);
+
+for (let i = 0; i < count * 3 * 3; i++) {
+  positionsArray[i] = (Math.random() - 0.5) * 2;
 }
+
+const positionAttribute = new THREE.BufferAttribute(positionsArray, 3);
+geometry.setAttribute("position", positionAttribute);
 
 // Object
 // const geometry = new THREE.BoxGeometry(1, 1, 1);
